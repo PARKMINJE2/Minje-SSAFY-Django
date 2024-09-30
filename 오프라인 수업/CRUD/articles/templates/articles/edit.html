@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1> EDIT </h1>
+  {% comment %} variable routing ---> article.pk {% endcomment %}
+  <form action="{% url "articles:update" article.pk%}" method = "POST">
+    {% csrf_token %}
+    
+    <div> 
+      <label for="title">Title : </label>
+      {% comment %} value는 초기값 {% endcomment %}
+      <input type="text" name = "title" id = "title" value="{{article.title}}">
+    </div>
+      
+    <div> 
+      <label for="content">Content : </label>
+      {% comment %} 초기글(content) DTL {% endcomment %}
+      <textarea name="content" id="content" cols="30" rows="10">{{article.content}}</textarea>
+    </div>
+
+    <input type="submit">
+  </form>
+
+  {% comment %} 취소버튼 {% endcomment %}
+  <a href="{% url "articles:index" %}"> [Home] </a>
+
+{% endblock content %}

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Throw</h1>
+  {% comment %} naming url 패턴 {% endcomment %}
+  {% comment %} {% url app_name(namespace):naming URL 패턴(name) %} {% endcomment %}
+  <form action="{% url 'articles:catch' %}" method="GET">
+    <input type="text", name="throw">
+    <input type="submit">
+  </form>
+{% endblock content %}

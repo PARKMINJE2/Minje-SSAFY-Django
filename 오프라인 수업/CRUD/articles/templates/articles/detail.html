@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <h2> DETAIL </h2>
+  {% comment %} DTL 변수 {% endcomment %}
+  <h3>{{article.pk}} 번째 게시글</h3>
+
+  <hr>
+
+  <p>제목 : {{article.title}}</p>
+  <p>내용 : {{article.content}}</p>
+  <p>작성 시각 : {{article.created_at}}</p>
+  <p>수정 시각 : {{article.updated_at}}</p>
+
+  <hr>
+  {% comment %} 변경 버튼, variabel routing이기 떄문에 article.pk {% endcomment %}
+  <a href="{% url "articles:edit" article.pk%}">EDIT</a>
+
+  <hr>
+  {% comment %} update버튼
+  delete버튼
+  {% endcomment %}
+  <form action="{% url "articles:delete" article.pk %}" method = "POST">
+    {% csrf_token %}
+    {% comment %} value는 초기값 초기 페이지에 뜨는 글을 DELETE로 하겠다 {% endcomment %}
+    <input type="submit" value="DELETE">
+  </form>
+
+
+  {% comment %} back버튼(home버튼)  {% endcomment %}
+  {% comment %} url naming pattern {% endcomment %}
+  <a href="{% url "articles:index" %}">Home</a>
+{% endblock content %}

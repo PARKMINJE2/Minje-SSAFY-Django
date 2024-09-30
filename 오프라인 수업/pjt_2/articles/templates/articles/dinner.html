@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% comment %} 템플릿 상속 성공 {% endcomment %}
+
+{% comment %} 구멍 뚫은 곳에 내용넣기 {% endcomment %}
+{% block content %}
+
+{% comment %} for문 반복문 {% endcomment %}
+  <h2>MENU</h2>
+  <ul>
+    {% for food in foods %}
+    <li>
+      {{ food }}
+    </li>
+    {% endfor %}
+  </ul>
+
+{% comment %} 필터 {% endcomment %}
+  <p>{{ picked }} 메뉴는 {{ picked | length }} 글자 입니다.</p>
+
+  {% if foods|length == 0 %}
+    <p>메뉴가 소진되었습니다.</p>
+  {% else %}
+    <p>아직 메뉴가 남았습니다.</p>
+  {% endif %}
+
+
+{% endblock content %}
